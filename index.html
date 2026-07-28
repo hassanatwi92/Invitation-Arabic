@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>حسن و مها</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+
+<style>
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Georgia', serif;
+    color: white;
+    text-align: center;
+    background-color: #222;
+    overflow: hidden;
+}
+
+body {
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.moving-bg{
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    z-index: 0;
+}
+.bg-track{
+    display: flex;
+    width: max-content;
+    height: 100%;
+    animation: moveBg 60s linear infinite;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.bg-track img{
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+@keyframes moveBg{
+
+    from{
+        transform: translateX(0);
+    }
+
+    to{
+        transform: translateX(-500vw);
+    }
+
+}
+
+/* ===== النصوص متجاوبة ===== */
+h1 {
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(50px, 10vw, 95px);
+    font-weight: normal;
+}
+
+h2 {
+    font-size: clamp(18px, 4vw, 28px);
+    margin-top: 20px;
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
+}
+
+p {
+    font-size: clamp(14px, 3vw, 18px);
+    line-height: 1.6;
+    text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+}
+
+/* ===== الأزرار ===== */
+button {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.4);
+    color: white;
+    padding: 15px 35px;
+    font-size: 18px;
+    border-radius: 40px;
+    cursor: pointer;
+    backdrop-filter: blur(5px);
+    transition: 0.3s;
+}
+
+button:hover {
+    background: white;
+    color: black;
+    transform: scale(1.01);
+}
+
+.nav-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 10px;
+    position: relative;
+    z-index: 2;
+}
+
+/* ===== المجموعات ===== */
+.radio-group {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 10px;
+}
+
+textarea {
+    width: 80%;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+/* ===== الصور متجاوبة ===== */
+.main-logo, #slides img {
+    max-width: 90%;
+    max-height: 50vh;
+    width: auto;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+.main-logo{
+    animation: floatLogo 4s ease-in-out infinite;
+}
+
+@keyframes floatLogo{
+    0%{
+        transform: translateY(0px);
+    }
+
+    50%{
+        transform: translateY(-10px);
+    }
+
+    100%{
+        transform: translateY(0px);
+    }
+}
+
+/* ===== overlay ===== */
+.overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.35);
+
+    z-index: 0;
+}
+
+/* ===== شاشات ===== */
+.screen {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    animation: fadeIn 1s ease;
+
+    z-index: 2;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+.hidden { display: none; }
+
+.slide-animation{
+    animation: slideFade 0.8s ease;
+}
+
+@keyframes slideFade{
+
+    from{
+        opacity:0;
+        transform:translateY(25px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+
+#countdown {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 2;
+}
+#countdown div {
+    text-align: center;
+    background: rgba(255,255,255,0.08);
+    padding: 10px;
+    border-radius: 18px;
+    min-width: 55px;
+    backdrop-filter: blur(5px);
+}
+
+@media (max-width: 480px) {
+
+    #countdown {
+        gap: 6px;
+    }
+
+    #countdown div {
+        min-width: 45px;
+        padding: 8px;
+        font-size: 0.9rem;
+    }
+
+    #countdown div div {
+        font-size: 1.1rem;
+    }
+
+}
+#countdown div div {
+    font-size: 1.5rem;
+}
+
+/* ===== Responsive إضافي ===== */
+@media (max-width: 480px) {
+    button {
+        padding: 12px 25px;
+        font-size: 18px;
+    }
+    .radio-group {
+        flex-direction: column;
+    }
+    textarea {
+        width: 90%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="moving-bg">
+    <div class="bg-track">
+        <img src="bg1.jpg">
+        <img src="bg2.jpg">
+        <img src="bg3.jpg">
+        <img src="bg4.jpg">
+        <img src="bg5.jpg">
+
+        <!-- تكرار للـ loop -->
+        <img src="bg1.jpg">
+        <img src="bg2.jpg">
+        <img src="bg3.jpg">
+        <img src="bg4.jpg">
+        <img src="bg5.jpg">
+    </div>
+</div>
+
+<!-- الصفحة الأولى -->
+<div id="opening" class="screen">
+    <div class="overlay"></div>
+
+    <img src="logo.png" class="main-logo">
+    
+    <div id="countdown">
+        <div><div id="seconds">0</div>ثانية</div>
+        <div><div id="minutes">0</div>دقيقة</div>
+        <div><div id="hours">0</div>ساعات</div>
+        <div><div id="days">0</div>يوم</div>
+    </div>
+
+    <button onclick="startSite()">إضغط للبدء</button>
+</div>
+
+<!-- الصفحة الثانية -->
+<div id="content" class="screen hidden">
+    <div class="overlay"></div>
+    <div style="position:relative; z-index:2;">
+        <h2>وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُمْ مِنْ أَنْفُسِكُمْ أَزْوَاجًا لِتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُمْ مَودَّةً وَرَحْمَةً</h2>
+        <h2>يتشرف</h2>
+        <div style="display:flex; justify-content:center; gap:50px; flex-wrap: wrap; font-size:1.2rem;">
+            <div><div style="font-size:1.5rem;">السيد</div>بلال الخياط</div>
+            <div><div style="font-size:1.5rem;">السيد</div>قاسم عطوي</div>
+        </div>
+        <h2>بدعوتكم لحضور حفل زفاف ولديهما</h2>
+        <h2>💍حسن & مها💍</h2>
+    </div>
+    <div class="nav-buttons">
+        <button onclick="goOpening()">⏮ الرجوع</button>
+        <button onclick="next()">التالي ⏭</button>
+    </div>
+</div>
+
+<!-- الشرائح -->
+<div id="slides" class="screen hidden">
+    <div class="overlay"></div>
+    <div id="textSlides" style="position:relative; z-index:2;"></div>
+    <div class="nav-buttons">
+        <button onclick="prevSlide()">⏮ الرجوع</button>
+        <button onclick="nextSlide()">التالي ⏭</button>
+    </div>
+</div>
+
+<audio id="music" loop>
+    <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+/* ===== العد التنازلي ===== */
+const weddingDate = new Date("2026-09-04T20:00:00").getTime();
+setInterval(() => {
+    const now = new Date().getTime();
+    const d = weddingDate - now;
+    if(d > 0){
+        days.innerHTML = Math.floor(d/(1000*60*60*24));
+        hours.innerHTML = Math.floor((d%(1000*60*60*24))/(1000*60*60));
+        minutes.innerHTML = Math.floor((d%(1000*60*60))/(1000*60));
+        seconds.innerHTML = Math.floor((d%(1000*60))/1000);
+    }
+}, 1000);
+
+
+
+/* ===== الشرائح ===== */
+const slidesContent = [
+`<h2>حفل الزفاف</h2>
+<div style="font-size:60px; margin-bottom:10px;">🕖</div>
+<p>الجمعة, 04/09/2026<br>8:00 مساءً!<br>La Sale Venue - صيدا</p>
+<button onclick="window.open('https://maps.app.goo.gl/Ycb2t6fvy4pCcFYc9?g_st=ic')">إفتح الخريطة</button>`,
+
+`<div style="font-size:60px; margin-bottom:10px;">🎁</div>
+<h2>لتقديم الهداية</h2>
+<p>حساب ويش: 76059770<br>حساب بنكي: 0083910802470011</p>`,
+
+`<img src="logo.png" alt="H & M Logo" style="width:200px; background:transparent;">
+<h2>لتأكيد الحضور</h2>
+<p>تكتمل بهجتنا بجميل حضوركم، فهل تسعدوننا؟</p>
+<div class="radio-group">
+<label><input type="radio" name="attend" value="Yes" onchange="showGuestOptions(true)"> نعم</label>
+<label><input type="radio" name="attend" value="No" onchange="showGuestOptions(false)"> آسف</label>
+</div>
+<div id="guestOptions" class="hidden">
+<p>عدد الأشخاص:</p>
+<div class="radio-group">
+<label><input type="radio" name="guestOption" value="1"> 1</label>
+<label><input type="radio" name="guestOption" value="2"> 2</label>
+</div>
+</div>
+<textarea id="msg" placeholder="رسالة صغيرة من القلب إلى القلب"></textarea><br>
+<button onclick="sendWhatsApp()">أرسل</button>`
+];
+
+let indexSlide = 0;
+const textSlides = document.getElementById("textSlides");
+
+function animateSlide(){
+
+    textSlides.classList.remove("slide-animation");
+
+    void textSlides.offsetWidth;
+
+    textSlides.classList.add("slide-animation");
+
+}
+
+function startSite(){
+    opening.classList.add("hidden");
+    content.classList.remove("hidden");
+    music.play().catch(()=>{});
+}
+
+function next(){
+
+    content.classList.add("hidden");
+
+    slides.classList.remove("hidden");
+
+    textSlides.innerHTML = slidesContent[indexSlide];
+
+    animateSlide();
+
+}
+
+function prev(){
+    content.classList.add("hidden");
+    opening.classList.remove("hidden");
+}
+
+function nextSlide(){
+
+    if(indexSlide < slidesContent.length-1){
+
+        indexSlide++;
+
+        textSlides.innerHTML = slidesContent[indexSlide];
+
+        animateSlide();
+
+    }
+
+}
+
+function prevSlide(){
+
+    if(indexSlide > 0){
+
+        indexSlide--;
+
+        textSlides.innerHTML = slidesContent[indexSlide];
+
+        animateSlide();
+
+    } else {
+
+        slides.classList.add("hidden");
+
+        content.classList.remove("hidden");
+
+    }
+
+}
+
+function showGuestOptions(show){
+    const g = document.getElementById("guestOptions");
+    document.querySelectorAll('input[name="guestOption"]').forEach(r => r.checked = false);
+    show ? g.classList.remove("hidden") : g.classList.add("hidden");
+}
+
+function sendWhatsApp(){
+
+    const attend =
+    document.querySelector('input[name="attend"]:checked')?.value || "";
+
+    const guest =
+    document.querySelector('input[name="guestOption"]:checked')?.value || "";
+
+    const msg =
+    document.getElementById("msg").value;
+
+    if(!attend){
+        alert("من فضلك أكّد الحضور");
+        return;
+    }
+
+    if(attend === "Yes" && !guest){
+        alert("يرجى اختيار عدد الأشخاص");
+        return;
+    }
+
+    const text =
+`الحجز
+الحضور: ${attend}
+عدد الأشخاص: ${guest}
+رسالة: ${msg}`;
+
+    window.open(
+`https://wa.me/96176059770?text=${encodeURIComponent(text)}`
+    );
+
+    textSlides.innerHTML =
+    "<h1>😍شكراً لكم😍</h1><p>كلنا لهفة وشوق لنشارككم أجمل لحظات عمرنا</p>";
+}
+
+function goOpening(){
+    document.getElementById("content").classList.add("hidden");
+    document.getElementById("opening").classList.remove("hidden");
+}
+</script>
+
+</body>
+</html>
