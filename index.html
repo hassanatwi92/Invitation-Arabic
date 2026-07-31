@@ -370,12 +370,16 @@ setInterval(() => {
 const slidesContent = [
 `<h2>حفل الزفاف</h2>
 <div style="font-size:60px; margin-bottom:10px;">🕖</div>
-<p>الجمعة, 04/09/2026<br>8:00 مساءً!<br>La Sale Venue - صيدا</p>
+<p>الجمعة, 04/09/2026<br>8:00 مساءً!<br>La Salle Venue - صيدا</p>
 <button onclick="window.open('https://maps.app.goo.gl/Ycb2t6fvy4pCcFYc9?g_st=ic')">إفتح الخريطة</button>`,
 
 `<div style="font-size:60px; margin-bottom:10px;">🎁</div>
 <h2>لتقديم الهداية</h2>
-<p>حساب ويش: 76059770<br>حساب بنكي: 0083910802470011</p>`,
+<p>حساب ويش: 76059770
+<p dir="rtl">
+  حساب <span dir="ltr">IBL</span> بنك: 0083910802470011
+</p>
+</p>`,
 
 `<img src="logo.png" alt="H & M Logo" style="width:200px; background:transparent;">
 <h2>لتأكيد الحضور</h2>
@@ -390,6 +394,7 @@ const slidesContent = [
 <label><input type="radio" name="guestOption" value="1"> 1</label>
 <label><input type="radio" name="guestOption" value="2"> 2</label>
 </div>
+<h2>جنّة الأطفال منازلهم</h2>
 </div>
 <textarea id="msg" placeholder="رسالة صغيرة من القلب إلى القلب"></textarea><br>
 <button onclick="sendWhatsApp()">أرسل</button>`
